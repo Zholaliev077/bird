@@ -10,11 +10,13 @@ const GET_BY_NAME = API + "search.php?s=";
 const GET_BY_FILTER = API + "filter.php?a=";
 const GET_BY_ID = API + "lookup.php?i=";
 
+// ===============================================
 const fetchALLcocktails = async () => {
   const req = await fetch(GET_ALL_COCKTAILS);
   const res = await req.json();
   renderCocktails(res.drinks);
 };
+
 // ================================================================================================================================
 const fetchCOCname = async (e) => {
   e.preventDefault();
@@ -23,6 +25,7 @@ const fetchCOCname = async (e) => {
   const res = await req.json();
   renderCocktails(res.drinks);
 };
+
 // ==================================================================================================================================
 const Fetchcocraildetail = async (id) => {
   // console.log(id);
@@ -30,6 +33,7 @@ const Fetchcocraildetail = async (id) => {
   const res = await req.json();
   renderDetailcocktail(res.drinks[0]);
 };
+
 // =====================================================================================================================================
 const fetchByFilter = async () => {
   //   console.log(select.value);
@@ -41,7 +45,10 @@ const fetchByFilter = async () => {
   renderCocktails(res.drinks);
 };
 
-// =====================================================================================================================================
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const renderCocktails = (data) => {
   //   console.log(data);
   output.innerHTML = "";
@@ -66,7 +73,7 @@ const renderCocktails = (data) => {
 };
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const renderDetailcocktail = (cocktail) => {
-  // console.log(cocktail);
+  console.log(cocktail);
   output.innerHTML = "";
   const wrapper = document.createElement("div");
   const image = document.createElement("img");
@@ -89,6 +96,8 @@ const renderDetailcocktail = (cocktail) => {
   wrapper.append(image, title, ol);
   output.append(wrapper);
 };
+
+
 
 form.addEventListener("submit", fetchCOCname);
 
